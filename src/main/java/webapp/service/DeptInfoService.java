@@ -2,6 +2,7 @@ package webapp.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -35,23 +36,6 @@ public class DeptInfoService {
 
 	public Dept getDeptInfo(Integer deptno) {
 
-		// All or Nothing
-//		DataSourceTransactionManager tm = new DataSourceTransactionManager(
-//				dataSource);
-//		TransactionStatus status = null;
-//		try {
-//			status = tm.getTransaction(null);
-//		} catch (TransactionException e) {
-//			tm.rollback(status);
-//			throw new ConnectionFailException("Transaction begin fail", e);
-//		}
-		// try {
-		// Connection con = datasource.getConnection();
-		// GlobalVars.con.set(con);
-		// } catch (SQLException e) {
-		// throw new ConnectionFailException("connection fail", e);
-		// }
-
 		Dept dept = deptdao.selectByDeptno(deptno);
 
 
@@ -59,21 +43,17 @@ public class DeptInfoService {
 	}
 	
 	public Dept getDeptInfoWithEmps(Integer deptno){
-		
-//		DataSourceTransactionManager tm = new DataSourceTransactionManager(dataSource);
-//		DefaultTransactionDefinition definition = new DefaultTransactionDefinition();
-//		definition.setReadOnly(true);
-//		
-//		TransactionStatus status = tm.getTransaction(definition);
-//		
+			
 		Dept dept = deptdao.selectByDeptnoWithEmps(deptno);
-		
-//		if(dept == null)
-//			throw new DeptAccessException("Dept Not Found");
-//		
-//		tm.commit(status);
-		
+	
 		return dept;
+	}
+	
+	public List<Dept> getDeptInfoAll(){
+		
+		List<Dept> list = deptdao.selectAll();
+		
+		return list;
 	}
 
 }

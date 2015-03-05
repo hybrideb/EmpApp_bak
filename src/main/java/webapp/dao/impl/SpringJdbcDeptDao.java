@@ -35,26 +35,13 @@ public class SpringJdbcDeptDao implements DeptDao {
 		log.info("selectByDeptno(" + deptno + ")");
 		log.info("##################################");
 
-		
 		JdbcTemplate template = new JdbcTemplate(dataSource);
 
-	
-			Dept dept = template.queryForObject(SELECT_BY_DEPTNO,
-					new BeanPropertyRowMapper<Dept>(Dept.class), deptno);
-		
+		Dept dept = template.queryForObject(SELECT_BY_DEPTNO,
+				new BeanPropertyRowMapper<Dept>(Dept.class), deptno);
 
 		return dept;
 	}
-
-	// ResultSetExtractor<Dept> rse = new ResultSetExtractor<Dept>() {
-	//
-	// @Override
-	// public Dept extractData(ResultSet rs) throws SQLException,
-	// DataAccessException {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
-	// };
 
 	class DeptResultSetExtractor implements ResultSetExtractor<Dept> {
 
@@ -79,11 +66,11 @@ public class SpringJdbcDeptDao implements DeptDao {
 				emp.setHiredate(rs.getDate("hiredate"));
 				emp.setSal(rs.getFloat("sal"));
 				emp.setComm(rs.getFloat("comm"));
-				
+
 				emps.add(emp);
 			}
-			
-			if(dept!=null){
+
+			if (dept != null) {
 				dept.setEmps(emps);
 			}
 
@@ -93,11 +80,11 @@ public class SpringJdbcDeptDao implements DeptDao {
 	}
 
 	@Override
-	public Dept selectByDeptnoWithEmps(Integer deptno)  {
+	public Dept selectByDeptnoWithEmps(Integer deptno) {
 		log.info("########################################");
 		log.info("selectByDeptnoWithEmps(" + deptno + ")");
 		log.info("########################################");
-		
+
 		JdbcTemplate template = new JdbcTemplate(dataSource);
 		DeptResultSetExtractor rse = new DeptResultSetExtractor();
 
@@ -107,13 +94,18 @@ public class SpringJdbcDeptDao implements DeptDao {
 	}
 
 	@Override
-	public List<webapp.model.Dept> selectAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public List<Dept> selectAll() {
+//		log.info("#########");
+//		log.info("selectAll");
+//		log.info("#########");
+//		
+//		JdbcTemplate template = new JdbcTemplate(dataSource);
+//
+//	//	return template.query(SELECT_ALL,new );
+//	}
 
 	@Override
-	public List<webapp.model.Dept> selectAllWithEmps() throws SQLException {
+	public List<webapp.model.Dept> selectAllWithEmps() {
 		// TODO Auto-generated method stub
 		return null;
 	}
