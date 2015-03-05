@@ -16,7 +16,10 @@
 		WHERE d.deptno = #{deptno}
 
 	</select>
-	<select id="selectAll" resultType=" "></select>
+	<select id="selectAll" resultType="webapp.model.Dept">
+	    SELECT *
+	    FROM dept
+	</select>
 	<resultMap type="webapp.model.Dept" id="deptwithEmps">
 		<id property="deptno" column="deptno" />
 		<result property="dname" column="dname" />
