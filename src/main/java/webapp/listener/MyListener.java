@@ -25,7 +25,7 @@ public class MyListener implements ServletContextListener {
 	/**
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
-    public void contextDestroyed(ServletContextEvent arg0)  { 
+    public void contextDestroyed(ServletContextEvent sce)  { 
     	log.info("################################");
     	log.info("contextDestroyed");
     	log.info("################################");
@@ -34,7 +34,7 @@ public class MyListener implements ServletContextListener {
 	/**
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
-    public void contextInitialized(ServletContextEvent arg0)  { 
+    public void contextInitialized(ServletContextEvent sce)  { 
     	log.info("################################");
     	log.info("contextInitialized");
     	log.info("################################");
