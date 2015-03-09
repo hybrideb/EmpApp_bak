@@ -9,16 +9,20 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:/webapp/spring/beans.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   
-  <!-- needed for ContextLoaderListener -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:/webapp/spring/beans.xml</param-value>
-	</context-param>
-
-	<!-- Bootstraps the root web application context before servlet initialization -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+ <listener>
+    <listener-class>webapp.listener.MyListener</listener-class>
+  </listener>
+  
+  
+  
+  
   
 </web-app>
